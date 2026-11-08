@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wykładnicze grafy przypadkowe</title>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--fg:#E9E9E9;--muted:#BFBFBF;--y:#FFFF00;--b:#4FBDFF;--o:#FF8000;--g:#8BC34A;--r:#FF0000}
+*{box-sizing:border-box}
+body{margin:0;background:#141414;color:var(--fg);font-family:"Century Gothic","URW Gothic","Questrial","Avenir",sans-serif;font-size:17px;line-height:1.45}
+main{max-width:960px;margin:0 auto;padding:32px 16px 64px}
+.slide{position:relative;background:#000;border:1px solid #3a3a3a;border-radius:10px;padding:26px 36px 22px;margin:0 0 32px;box-shadow:0 4px 18px rgba(0,0,0,.6)}
+.num{position:absolute;top:12px;right:18px;color:#777;font-size:13px}
+h2{margin:0 0 16px;font-size:26px;font-weight:700}
+h3{margin:18px 0 8px;font-size:19px;color:var(--y)}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:1.4em} li{margin:5px 0} ul li::marker{color:#FFFF80} ol li::marker{color:#FFFF80;font-weight:700}
+.c{text-align:center}.r{text-align:right}.small{font-size:15px}
+i.m,.m{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif;font-style:italic}
+.eq{margin:10px 0;overflow-x:auto;overflow-y:hidden}
+.boxed{color:var(--y);border:2px solid var(--r);border-radius:12px;padding:2px 14px;width:fit-content;max-width:100%;margin:12px auto}
+.row{display:flex;gap:22px;align-items:center;margin:10px 0}.row.top{align-items:flex-start}
+.col{flex:1;min-width:0}
+.notes p,.ann li{color:#FFFF80;font-size:15.5px}
+.ann{list-style:none;padding-left:0}.ann li{border-left:3px solid var(--b);padding-left:10px;margin:12px 0}
+.arr{color:var(--y)}
+figure{margin:8px auto;text-align:center}figure svg{max-width:100%;height:auto;overflow:visible}
+svg line.g{stroke:#808080;stroke-width:.8} svg .ax{stroke:var(--fg);stroke-width:1} svg .e{stroke:var(--muted);stroke-width:1.3}
+svg text.nl{font:italic 14px "Cambria Math","STIX Two Math",serif;text-anchor:middle;fill:#000}
+.fo{color:var(--fg);line-height:1.2}
+.fp{margin:0}
+.code{position:relative;margin:8px 0}
+pre{margin:0;background:#1c1c1c;border:1px solid #333;border-radius:6px;padding:10px 14px;overflow-x:auto;font:14px/1.45 Consolas,"DejaVu Sans Mono",Menlo,monospace;color:var(--fg);tab-size:4}
+code{font-family:Consolas,"DejaVu Sans Mono",Menlo,monospace}
+p code,li code{background:#1c1c1c;border:1px solid #333;border-radius:4px;padding:0 4px;font-size:.9em;color:var(--b)}
+.k{color:var(--b)}.s{color:var(--o)}.cm{color:var(--g)}
+.cp{position:absolute;top:6px;right:6px;background:#2b2b2b;color:var(--muted);border:1px solid #444;border-radius:4px;font:12px sans-serif;padding:2px 8px;cursor:pointer;opacity:.6}
+.cp:hover{opacity:1}.code:hover .cp{opacity:1}
+footer{margin-top:18px;padding-top:6px;border-top:1px solid #222;color:var(--muted);font-size:13px}
+.btn{display:inline-block;background:var(--b);color:#000;text-decoration:none;padding:8px 22px;border-radius:7px}
+.lit li{margin:8px 0}
+@media (max-width:720px){.row{flex-direction:column;align-items:stretch}.slide{padding:20px 16px}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E9E9E9"/></marker></defs></svg>
+<main>
+<section class="slide" id="s1"><div class="num">1</div><h2>Wykładnicze grafy przypadkowe</h2><figure><svg viewBox="212 160 315 212" style="width:420px"><line class="g" x1="296" y1="179" x2="321" y2="208"/><line class="g" x1="296" y1="179" x2="273" y2="220"/><line class="g" x1="516" y1="231" x2="482" y2="248"/><line class="g" x1="482" y1="248" x2="513" y2="274"/><line class="g" x1="482" y1="248" x2="483" y2="293"/><line class="g" x1="351" y1="224" x2="366" y2="259"/><line class="g" x1="366" y1="259" x2="351" y2="296"/><line class="g" x1="380" y1="211" x2="351" y2="224"/><line class="g" x1="321" y1="208" x2="351" y2="224"/><line class="g" x1="264" y1="306" x2="295" y2="321"/><line class="g" x1="264" y1="306" x2="224" y2="322"/><line class="g" x1="273" y1="220" x2="238" y2="242"/><line class="g" x1="238" y1="242" x2="223" y2="286"/><line class="g" x1="238" y1="242" x2="264" y2="306"/><line class="g" x1="434" y1="324" x2="390" y2="327"/><line class="g" x1="295" y1="321" x2="335" y2="324"/><line class="g" x1="309" y1="275" x2="295" y2="321"/><line class="g" x1="223" y1="286" x2="224" y2="322"/><line class="g" x1="223" y1="286" x2="264" y2="306"/><line class="g" x1="516" y1="231" x2="513" y2="274"/><line class="g" x1="516" y1="231" x2="483" y2="293"/><line class="g" x1="434" y1="324" x2="475" y2="328"/><line class="g" x1="362" y1="170" x2="399" y2="175"/><line class="g" x1="399" y1="175" x2="380" y2="211"/><line class="g" x1="399" y1="175" x2="425" y2="225"/><line class="g" x1="513" y1="274" x2="483" y2="293"/><line class="g" x1="425" y1="225" x2="421" y2="267"/><line class="g" x1="366" y1="259" x2="421" y2="267"/><line class="g" x1="421" y1="267" x2="434" y2="324"/><line class="g" x1="351" y1="296" x2="335" y2="324"/><line class="g" x1="335" y1="324" x2="352" y2="360"/><line class="g" x1="309" y1="275" x2="351" y2="296"/><line class="g" x1="309" y1="275" x2="264" y2="306"/><line class="g" x1="483" y1="293" x2="475" y2="328"/><line class="g" x1="380" y1="211" x2="425" y2="225"/><line class="g" x1="321" y1="208" x2="273" y2="220"/><line class="g" x1="362" y1="170" x2="380" y2="211"/><line class="g" x1="362" y1="170" x2="351" y2="224"/><line x1="351" y1="296" x2="390" y2="327" stroke="#FFFF00" stroke-width="2"/><line x1="390" y1="327" x2="352" y2="360" stroke="#FFFF00" stroke-width="2"/><line x1="351" y1="296" x2="352" y2="360" stroke="#FFFF00" stroke-width="2"/><circle cx="296" cy="179" r="4" fill="#E9E9E9"/><circle cx="482" cy="248" r="4" fill="#E9E9E9"/><circle cx="366" cy="259" r="4" fill="#E9E9E9"/><circle cx="351" cy="224" r="4" fill="#E9E9E9"/><circle cx="264" cy="306" r="4" fill="#E9E9E9"/><circle cx="238" cy="242" r="4" fill="#E9E9E9"/><circle cx="295" cy="321" r="4" fill="#E9E9E9"/><circle cx="223" cy="286" r="4" fill="#E9E9E9"/><circle cx="516" cy="231" r="4" fill="#E9E9E9"/><circle cx="434" cy="324" r="4" fill="#E9E9E9"/><circle cx="399" cy="175" r="4" fill="#E9E9E9"/><circle cx="513" cy="274" r="4" fill="#E9E9E9"/><circle cx="421" cy="267" r="4" fill="#E9E9E9"/><circle cx="335" cy="324" r="4" fill="#E9E9E9"/><circle cx="309" cy="275" r="4" fill="#E9E9E9"/><circle cx="483" cy="293" r="4" fill="#E9E9E9"/><circle cx="425" cy="225" r="4" fill="#E9E9E9"/><circle cx="224" cy="322" r="4" fill="#E9E9E9"/><circle cx="273" cy="220" r="4" fill="#E9E9E9"/><circle cx="380" cy="211" r="4" fill="#E9E9E9"/><circle cx="321" cy="208" r="4" fill="#E9E9E9"/><circle cx="475" cy="328" r="4" fill="#E9E9E9"/><circle cx="362" cy="170" r="4" fill="#E9E9E9"/><circle cx="390" cy="327" r="6" fill="#FFFF00"/><circle cx="352" cy="360" r="6" fill="#FFFF00"/><circle cx="351" cy="296" r="6" fill="#FFFF00"/></svg></figure><p class="c"><b style="color:#FFFF80">dr hab. Piotr Fronczak</b><br><span style="color:#BFBFBF">Wydział Fizyki, Politechnika Warszawska</span></p></section>
+<section class="slide" id="s2"><div class="num">2</div><h2>Zespół wykładniczych grafów przypadkowych (ERG)</h2><p>Każdy graf \(G\) o \(N\) węzłach dostaje wagę jak stan w zespole kanonicznym:</p><div class="eq boxed">\[P(G)=\frac{e^{-H(G)}}{Z},\qquad Z=\sum_{G} e^{-H(G)}\]</div><p>Hamiltonian jest kombinacją liniową obserwabli grafu z parametrami \(\theta_i\):</p><div class="eq">\[H(G)=\sum_{i}\theta_i\,x_i(G)\]</div><ul><li>\(x_i\) – obserwable: liczba krawędzi \(E\), liczba trójkątów \(T\), gwiazdy…</li><li>\(\theta_i\) – parametry ustalające średnie \(\langle x_i\rangle\)</li><li>\(P(G)\) <b>maksymalizuje entropię</b> przy zadanych średnich: nie zakłada nic ponad to, co mierzymy</li></ul><footer>J. Park, M. E. J. Newman, Statistical mechanics of networks, Phys. Rev. E 70, 066117 (2004)</footer></section>
+<section class="slide" id="s3"><div class="num">3</div><h2>Graf Erdősa–Rényiego</h2><p>Zapiszmy hamiltonian za pomocą elementów macierzy sąsiedztwa:</p><div class="eq">\[H(G)=\theta\sum_{i\lt j}A_{ij}.\]</div><p>Wtedy</p><div class="eq">\[e^{-H(G)}=e^{-\theta\sum_{i\lt j}A_{ij}}=\prod_{i\lt j}e^{-\theta A_{ij}}.\]</div><p>Sumowanie po wszystkich grafach oznacza niezależne sumowanie po wszystkich możliwych wartościach \(A_{ij}\):</p><div class="eq">\[Z=\sum_{A_{12}=0}^{1}\sum_{A_{13}=0}^{1}\cdots\sum_{A_{N-1,N}=0}^{1}\prod_{i\lt j}e^{-\theta A_{ij}}.\]</div><p>Ponieważ każdy czynnik zależy tylko od jednej zmiennej \(A_{ij}\), możemy zamienić sumowanie na iloczyn:</p><div class="eq boxed">\[Z=\prod_{i\lt j}\left(\sum_{A_{ij}=0}^{1}e^{-\theta A_{ij}}\right)=\prod_{i\lt j}\left(e^{0}+e^{-\theta}\right)=\prod_{i\lt j}\left(1+e^{-\theta}\right)\]</div><div class="row"><div class="col">Ze wzoru</div><div class="col">\[\langle E\rangle=p\binom{N}{2}=-\frac{\partial\ln Z}{\partial\theta}\]</div><div class="col">dostaniemy związek</div><div class="col"><div class="eq boxed">\[p=\frac{1}{1+e^{\theta}}.\]</div></div></div><footer>J. Park, M. E. J. Newman, Statistical mechanics of networks, Phys. Rev. E 70, 066117 (2004)</footer></section>
+<section class="slide" id="s4"><div class="num">4</div><h2>Algorytm Metropolisa na grafach</h2><p>Błądzimy po przestrzeni grafów, zmieniając jedną parę węzłów naraz:</p><div class="row"><div class="col" style="flex:3"><ol><li>Wylosuj parę węzłów \((i,j)\)</li><li>Zaproponuj <b>przełączenie</b>: \(A_{ij}\to 1-A_{ij}\)</li><li>Policz zmianę energii \(\Delta H\)</li><li>Zaakceptuj z prawdopodobieństwem <span style="color:#FFFF00">\(P_{\mathrm{acc}}=\min(1,e^{-\Delta H})\)</span></li><li>Zapisz obserwable i wróć do 1.</li></ol></div><div class="col" style="flex:2"><figure><svg viewBox="462 332 240 164" style="width:320px"><line x1="468" y1="464" x2="694" y2="464" class="ax" marker-end="url(#ar)"/><line x1="560" y1="476" x2="560" y2="344" class="ax" marker-end="url(#ar)"/><polyline points="478,374 564,374 570,399 576,411 582,420 588,428 594,435 600,440 606,444 612,448 618,451 624,453 629,455 635,457 641,458 647,459 653,460 659,461 665,461 671,462 677,462" fill="none" stroke="#FFFF00" stroke-width="2" stroke-linejoin="round"/><line x1="556" y1="374" x2="564" y2="374" class="ax"/><foreignObject x="566" y="334" width="60" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:left"><i class="m">P</i><sub><i class="m">acc</i></sub></div></foreignObject><foreignObject x="664" y="466" width="40" height="22"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:center"><i class="m">ΔH</i></div></foreignObject><foreignObject x="550" y="466" width="20" height="22"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:center"><span class="m">0</span></div></foreignObject><foreignObject x="540" y="364" width="16" height="22"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:center"><span class="m">1</span></div></foreignObject><foreignObject x="606" y="398" width="80" height="26"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:left"><span style="color:#FFFF00"><i class="m">e</i><sup><i class="m">−ΔH</i></sup></span></div></foreignObject></svg></figure></div></div><div class="eq">\[\begin{aligned}\Delta H&=H(G^{\prime})-H(G)=\theta\sum_{k\lt l}A^{\prime}_{kl}-\theta\sum_{k\lt l}A_{kl}\\&=\theta\sum_{k\lt l}\left(A^{\prime}_{kl}-A_{kl}\right)=\theta\left(A^{\prime}_{ij}-A_{ij}\right)=\theta\left(1-2A_{ij}\right)\end{aligned}\]</div><footer>N. Metropolis et al., Equation of state calculations by fast computing machines, J. Chem. Phys. 21, 1087 (1953)</footer></section>
+
+<section class="slide" id="s5"><div class="num">5</div><h2>Kod 1: symulacja grafu wykładniczego</h2><div class="row top"><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code><span class="k">import</span> matplotlib.pyplot <span class="k">as</span> plt
+<span class="k">import</span> numpy <span class="k">as</span> np
+
+N = 100
+theta = 1
+steps = 100_000
+A = np.zeros((N, N), dtype=int)
+E = 0
+history_E = []
+
+<span class="cm"># Graf wykładniczy H = theta*E - Metropolis</span>
+<span class="k">for</span> _ <span class="k">in</span> <span class="k">range</span>(steps):
+  i, j = np.random.choice(N, 2, replace=<span class="k">False</span>)
+  dH = theta * (1 - 2 * A[i, j])
+
+  <span class="k">if</span> dH &lt; 0 <span class="k">or</span> np.random.rand() &lt; np.exp(-dH):
+    new_val = 1 - A[i, j]
+    A[i, j] = A[j, i] = new_val
+    E += 2*new_val - 1
+
+  history_E.append(E)
+
+<span class="cm"># Wykres E(t)</span>
+p = 1 / (1 + np.exp(theta))
+plt.plot(history_E)
+plt.axhline(N * (N - 1) * p / 2, color=<span class="s">'red'</span>, ls=<span class="s">'--'</span>)
+plt.xlabel(<span class="s">'t'</span>)
+plt.ylabel(<span class="s">'E(t)'</span>)
+plt.show()</code></pre></div></div><div class="col notes" style="flex:2"><ul class="ann"><li>\(\Delta H\) jednego przełączenia: <code>dH = …</code></li><li>akceptacja: \(\min(1,e^{-\Delta H})\)</li><li>bieżąca liczba krawędzi: <code>E += …</code></li><li>\(p=1/(1+e^{\theta})\)</li><li>teoria: \(\langle E\rangle=p\binom{N}{2}\) (linia przerywana)</li></ul></div></div></section>
+<section class="slide" id="s6"><div class="num">6</div><h2>Zadanie 1: klasyczny graf ER o tej samej gęstości</h2><div class="row top"><div class="col" style="flex:2"><p>Zbuduj klasyczny graf ER o \(N=100\) węzłach, łącząc każdą parę z prawdopodobieństwem \(p=1/(1+e^{\theta})\).</p></div><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code><span class="cm"># Klasyczny model ER</span>
+p = 1 / (1 + np.exp(theta))
+B = np.zeros((N, N))
+<span class="k">for</span> i <span class="k">in</span> <span class="k">range</span>(N):
+  <span class="k">for</span> j <span class="k">in</span> <span class="k">range</span>(i + 1, N):
+    <span class="k">if</span> np.random.rand() &lt; p:
+      B[i, j] = 1
+      B[j, i] = 1</code></pre></div></div></div><div class="row top"><div class="col" style="flex:2"><p>Policz stopnie węzłów w obu grafach i porównaj histogramy.</p></div><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code><span class="cm"># Rozkłady stopni obu sieci</span>
+degreesA = A.sum(axis=1)                <span class="cm"># graf z Metropolisa</span>
+degreesB = B.sum(axis=1)                <span class="cm"># klasyczny ER</span>
+
+bins = np.arange(0, 100, 2)
+plt.hist(degreesA, bins=bins, label=<span class="s">'Metropolis'</span>)
+plt.hist(degreesB, bins=bins, label=<span class="s">'Klasyczny ER'</span>, alpha=0.5)
+plt.xlabel(<span class="s">'k'</span>)
+plt.ylabel(<span class="s">'liczba węzłów'</span>)
+plt.legend()
+plt.show()</code></pre></div></div></div><div class="row top"><div class="col" style="flex:2"><p>Unormuj histogramy i nałóż na nie <b>rozkład dwumianowy</b> \(B(N-1,p)\).</p></div><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code><span class="k">from</span> scipy.stats <span class="k">import</span> binom
+plt.plot(bins,binom.pmf(bins,N-1,p))</code></pre></div></div></div></section>
+<section class="slide" id="s7"><div class="num">7</div><h2>Nagroda za trójkąty: model Straussa</h2><p>Do liczby krawędzi dodajemy liczbę trójkątów \(T\) z wagą \(\alpha\gt 0\):</p><div class="eq">\[H=\theta E-\alpha T\]</div><ul><li>Przełączenie pary \((i,j)\) zmienia \(T\) o liczbę <b>wspólnych sąsiadów</b>: \(c_{ij}=\sum_k A_{ik}A_{kj}\) (w kodzie: <code>A[i] @ A[j]</code>)</li></ul><div class="row"><div class="col" style="flex:3"><div class="eq boxed">\[\Delta H=\theta\,\Delta E-\alpha\,\Delta T=\left(\theta-\alpha c_{ij}\right)\Delta E\]</div><ul><li>Krawędzie domykające trójkąty są <b>tańsze</b>: sieć się klasteryzuje</li></ul></div><div class="col" style="flex:2"><figure><svg viewBox="438 238 216 172" style="width:290px"><line x1="570" y1="270" x2="500" y2="330" class="e"/><line x1="570" y1="270" x2="640" y2="330" class="e"/><line x1="500" y1="330" x2="570" y2="395" class="e"/><line x1="640" y1="330" x2="570" y2="395" class="e"/><line x1="455" y1="250" x2="500" y2="330" class="e"/><line x1="500" y1="330" x2="640" y2="330" stroke="#FFFF00" stroke-width="2" stroke-dasharray="9 7"/><circle cx="500" cy="330" r="11" fill="#E9E9E9"/><text x="500" y="335" class="nl">i</text><circle cx="640" cy="330" r="11" fill="#E9E9E9"/><text x="640" y="335" class="nl">j</text><circle cx="570" cy="270" r="11" fill="#4FBDFF"/><text x="570" y="275" class="nl">k</text><circle cx="570" cy="395" r="11" fill="#4FBDFF"/><text x="570" y="400" class="nl">k</text><circle cx="455" cy="250" r="11" fill="#E9E9E9"/></svg></figure><p class="c small">dodanie krawędzi \(i-j\) tworzy <span style="color:#4FBDFF">\(c_{ij}=2\)</span> trójkąty</p></div></div><footer>D. Strauss, On a general class of models for interaction, SIAM Review 28, 513 (1986)</footer></section>
+<section class="slide" id="s8"><div class="num">8</div><h2>Zadanie 2: co zmienić w Kodzie 1</h2><div class="row"><div class="col" style="flex:2"><p><b><span style="color:#FFFF80">1.</span> Nowy parametr i liczniki</b></p></div><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code>alpha = 0.01
+T = 0
+history_T = []</code></pre></div></div></div><div class="row"><div class="col" style="flex:2"><p><b><span style="color:#FFFF80">2.</span> Nowe \(\Delta H\)</b></p></div><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code>c = A[i] @ A[j]
+dE = 1 - 2*A[i, j]
+dH = (theta - alpha*c) * dE</code></pre></div></div></div><div class="row"><div class="col" style="flex:2"><p><b><span style="color:#FFFF80">3.</span> Po akceptacji</b></p></div><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code>T += dE*c</code></pre></div></div></div><div class="row"><div class="col" style="flex:2"><p><b><span style="color:#FFFF80">4.</span> Zapis w każdym kroku</b></p></div><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code>history_T.append(T)</code></pre></div></div></div><p><b><span style="color:#FFFF80">5.</span> Wykres:</b> zamiast samego E(t) narysuj obok siebie E(t) i T(t)</p><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code>fig, ax = plt.subplots(1, 2, figsize=(11, 4))
+
+ax[0].plot(history_E)
+ax[0].set(xlabel=<span class="s">"t"</span>, ylabel=<span class="s">"E(t)"</span>)
+
+ax[1].plot(history_T)
+ax[1].set(xlabel=<span class="s">"t"</span>, ylabel=<span class="s">"Liczba trójkątów"</span>)
+
+plt.show()</code></pre></div></section>
+<section class="slide" id="s9"><div class="num">9</div><h2>Zadanie 3: Wyznaczyć energię swobodną w przybliżeniu pola średniego</h2><p>Energia swobodna Helmholtza jest zdefiniowana jako</p><div class="eq">\[F=U-TS.\]</div><p>Przyjmujemy \(k_BT=1\), dlatego w bezwymiarowych jednostkach</p><div class="eq">\[F(p)=U(p)-S(p).\]</div><h3>Krok 1. Liczymy energię \(\boldsymbol{U(p)}\)</h3><p>Zakładamy, że każda z możliwych krawędzi istnieje <b>niezależnie</b> z takim samym prawdopodobieństwem \(p\).</p><p>Jest to <b>przybliżenie pola średniego</b>, ponieważ w rzeczywistym modelu Straussa krawędzie nie są niezależne.</p><div class="row"><div class="col"><p><b>Średnia liczba krawędzi</b></p></div><div class="col">\[\langle E\rangle=\binom{N}{2}p\]</div></div><div class="row"><div class="col"><p><b>Średnia liczba trójkątów</b></p></div><div class="col">\[\langle T\rangle=\binom{N}{3}p^{3}\]</div></div><p><b>Średnia energia</b></p><div class="eq">\[U(p)=\langle H\rangle=\theta\langle E\rangle-\alpha\langle T\rangle=\theta\binom{N}{2}p-\alpha\binom{N}{3}p^{3}\]</div><footer>J. Park, M. E. J. Newman, Solution for the properties of a clustered network, Phys. Rev. E 72, 026136 (2005)</footer></section>
+<section class="slide" id="s10"><div class="num">10</div><h3>Krok 2. Liczymy entropię \(\boldsymbol{S(p)}\)</h3><div class="eq">\[S=\ln\Omega\qquad(\text{bo }k_B=1)\]</div><p>gdzie \(\Omega\) jest liczbą mikrostanów odpowiadających danemu makrostanowi.</p><p>Mikrostan to konkretny graf, makrostan opisujemy liczbą krawędzi \(E\) (lub gęstością \(p\)).</p><p><b>Liczba grafów o zadanej liczbie krawędzi</b></p><div class="row"><div class="col">\[\Omega(E)=\binom{\binom{N}{2}}{E}\]</div><div class="col notes"><p><span class="arr">←</span> górny wyraz: ze wszystkich możliwych krawędzi</p><p><span class="arr">←</span> dolny wyraz: wybieramy \(E\) krawędzi</p></div></div><p>Po zastosowaniu przybliżenia Stirlinga i pamiętając, że \(E=\binom{N}{2}p\)</p><div class="eq">\[S(p)=-\binom{N}{2}\left[p\ln p+(1-p)\ln(1-p)\right]\]</div><footer>J. Park, M. E. J. Newman, Solution for the properties of a clustered network, Phys. Rev. E 72, 026136 (2005)</footer></section>
+
+<section class="slide" id="s11"><div class="num">11</div><div class="eq">\[F(p)=U(p)-S(p)\]</div><p>Otrzymujemy ostatecznie</p><div class="eq boxed">\[\begin{aligned}F(p)=&\;\theta\binom{N}{2}p-\alpha\binom{N}{3}p^{3}\\&+\binom{N}{2}\left[p\ln p+(1-p)\ln(1-p)\right]\end{aligned}\]</div><p>Jeśli ustalimy \(\alpha\) i \(N\), to dostaniemy</p><div class="row"><div class="col"><figure class="fp"><svg viewBox="-14 0 200 158" style="width:250px"><foreignObject x="-14" y="0" width="200" height="26"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:left">dla dużego \(\theta\):</div></foreignObject><polyline points="8,57 10,76 14,90 17,99 20,106 23,112 26,115 30,118 33,119 36,120 39,120 42,119 46,118 49,116 52,114 55,112 59,109 62,107 65,104 68,100 71,97 75,94 78,91 81,87 84,84 88,81 91,78 94,75 97,72 100,70 104,67 107,65 110,63 113,61 116,60 120,59 123,58 126,57 129,57 132,57 136,57 139,57 142,58 145,58 148,59 152,59 155,59 158,59 161,57 164,53 168,43 168,40" fill="none" stroke="#FFFF00" stroke-width="2" stroke-linejoin="round"/><circle cx="37" cy="120" r="4" fill="#FF0000"/><line x1="2" y1="128" x2="2" y2="30" class="ax" marker-end="url(#ar)"/><line x1="2" y1="128" x2="184" y2="128" class="ax" marker-end="url(#ar)"/><line x1="168" y1="125" x2="168" y2="131" class="ax"/><foreignObject x="6" y="22" width="60" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:left"><i class="m">F</i><span class="m">(</span><i class="m">p</i><span class="m">)</span></div></foreignObject><foreignObject x="-6" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><span class="m">0</span></div></foreignObject><foreignObject x="160" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><span class="m">1</span></div></foreignObject><foreignObject x="172" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><i class="m">p</i></div></foreignObject></svg></figure></div><div class="col"><figure class="fp"><svg viewBox="-14 0 200 178" style="width:250px"><foreignObject x="-14" y="0" width="200" height="26"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:left">dla średniego \(\theta\):</div></foreignObject><polyline points="8,40 10,60 14,75 17,86 20,95 23,102 26,107 30,111 33,114 36,117 39,118 42,119 46,120 49,120 52,120 55,119 59,118 62,117 65,116 68,114 71,113 75,111 78,109 81,108 84,106 88,105 91,104 94,102 97,101 100,100 104,100 107,99 110,99 113,99 116,99 120,100 123,100 126,101 129,103 132,104 136,106 139,108 142,110 145,112 148,115 152,117 155,118 158,120 161,120 164,117 168,109 168,106" fill="none" stroke="#FFFF00" stroke-width="2" stroke-linejoin="round"/><circle cx="48" cy="120" r="4" fill="#FF0000"/><circle cx="160" cy="120" r="4" fill="#FF0000"/><line x1="2" y1="128" x2="2" y2="30" class="ax" marker-end="url(#ar)"/><line x1="2" y1="128" x2="184" y2="128" class="ax" marker-end="url(#ar)"/><line x1="168" y1="125" x2="168" y2="131" class="ax"/><foreignObject x="6" y="22" width="60" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:left"><i class="m">F</i><span class="m">(</span><i class="m">p</i><span class="m">)</span></div></foreignObject><foreignObject x="-6" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><span class="m">0</span></div></foreignObject><foreignObject x="160" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><span class="m">1</span></div></foreignObject><foreignObject x="172" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><i class="m">p</i></div></foreignObject><foreignObject x="-14" y="148" width="200" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:center">metastabilność</div></foreignObject></svg></figure></div><div class="col"><figure class="fp"><svg viewBox="-14 0 200 158" style="width:250px"><foreignObject x="-14" y="0" width="200" height="26"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:16px;text-align:left">dla małego \(\theta\):</div></foreignObject><polyline points="8,40 10,50 14,59 17,65 20,70 23,74 26,78 30,81 33,83 36,85 39,87 42,88 46,89 49,90 52,91 55,91 59,92 62,92 65,92 68,92 71,93 75,93 78,93 81,93 84,93 88,93 91,93 94,94 97,94 100,94 104,95 107,95 110,96 113,97 116,98 120,99 123,100 126,102 129,103 132,105 136,106 139,108 142,110 145,112 148,114 152,116 155,118 158,119 161,120 164,120 168,116 168,115" fill="none" stroke="#FFFF00" stroke-width="2" stroke-linejoin="round"/><circle cx="162" cy="120" r="4" fill="#FF0000"/><line x1="2" y1="128" x2="2" y2="30" class="ax" marker-end="url(#ar)"/><line x1="2" y1="128" x2="184" y2="128" class="ax" marker-end="url(#ar)"/><line x1="168" y1="125" x2="168" y2="131" class="ax"/><foreignObject x="6" y="22" width="60" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:left"><i class="m">F</i><span class="m">(</span><i class="m">p</i><span class="m">)</span></div></foreignObject><foreignObject x="-6" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><span class="m">0</span></div></foreignObject><foreignObject x="160" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><span class="m">1</span></div></foreignObject><foreignObject x="172" y="129" width="16" height="20"><div xmlns="http://www.w3.org/1999/xhtml" class="fo" style="font-size:14px;text-align:center"><i class="m">p</i></div></foreignObject></svg></figure></div></div><footer>J. Park, M. E. J. Newman, Solution for the properties of a clustered network, Phys. Rev. E 72, 026136 (2005)</footer></section>
+<section class="slide" id="s12"><div class="num">12</div><h2>Zadanie 4: badanie metastabilności</h2><div class="row top"><div class="col" style="flex:3"><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code>N = 20
+alpha = 0.5
+steps = 1000
+
+A = np.zeros((N, N), dtype=int)
+E = 0
+T = 0
+
+<span class="cm"># Zwiększamy, a następnie zmniejszamy theta</span>
+thetas = np.linspace(0, 10, 20)
+thetas = np.r_[thetas, thetas[::-1]]
+
+history_E = []
+history_T = []
+
+<span class="k">for</span> theta <span class="k">in</span> thetas:
+
+    <span class="k">for</span> _ <span class="k">in</span> <span class="k">range</span>(steps):
+        i, j = np.random.choice(N, 2, replace=<span class="k">False</span>)
+
+        c = A[i] @ A[j]
+        dE = 1 - 2*A[i, j]
+        dH = (theta - alpha*c) * dE
+
+        <span class="k">if</span> dH &lt; 0 <span class="k">or</span> np.random.rand() &lt; np.exp(-dH):
+            A[i, j] = A[j, i] = 1 - A[i, j]
+            E += dE
+            T += dE*c
+
+    history_E.append(E)
+    history_T.append(T)</code></pre></div></div><div class="col notes" style="flex:2"><ul class="ann"><li><code>thetas</code>: \(\theta\) w górę, potem w dół</li><li><code>history_E</code>, <code>history_T</code>: stan po <code>steps</code> krokach</li></ul></div></div></section>
+<section class="slide" id="s13"><div class="num">13</div><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code>fig, ax1 = plt.subplots(figsize=(6, 4))
+ax1.plot(thetas, history_E, <span class="s">'o-'</span>)
+
+ax2 = ax1.twinx()
+ax2.plot(thetas, history_T, <span class="s">'s-'</span>, color=<span class="s">'orange'</span>)
+
+ax1.set_xlabel(<span class="s">r'$\theta$'</span>)
+ax1.set_ylabel(<span class="s">'Liczba krawędzi'</span>)
+ax2.set_ylabel(<span class="s">'Liczba trójkątów'</span>)
+plt.show()</code></pre></div><ul><li>Odczytaj, przy jakich \(\theta\) następuje zmiana struktury grafu.</li></ul><div class="code"><button class="cp" title="Kopiuj">Kopiuj</button><pre><code><span class="k">from</span> ipywidgets <span class="k">import</span> interact
+
+<span class="k">def</span> wykres_F(theta):
+    p = np.linspace(1e-5, 1 - 1e-5, 100)
+
+    <span class="cm"># Gęstość energii swobodnej f(p) na jedną krawędź</span>
+    f = theta*p - alpha*(N-2)/3.0*(p**3) + p*np.log(p) + (1-p)*np.log(1-p)
+
+    plt.plot(p, f,  label=<span class="s">rf"$\theta = {theta:.2f}$"</span>)
+    plt.xlabel(<span class="s">"$p$"</span>)
+    plt.ylabel(<span class="s">"$f(p)$"</span>)
+    plt.show()
+
+interact(wykres_F, theta=(0.0,10.0,0.1));</code></pre></div><p class="r"><a class="btn" href="model_straussa.html">Przykład</a></p></section>
+<section class="slide" id="s14"><div class="num">14</div><h2>Literatura</h2><ul class="lit"><li>J. Park, M. E. J. Newman, <i>Statistical mechanics of networks</i>, Phys. Rev. E 70, 066117 (2004)</li><li>J. Park, M. E. J. Newman, <i>Solution for the properties of a clustered network</i>, Phys. Rev. E 72, 026136 (2005)</li><li>D. Strauss, <i>On a general class of models for interaction</i>, SIAM Review 28, 513 (1986)</li><li>G. Robins et al., <i>An introduction to exponential random graph (p*) models for social networks</i>, Social Networks 29, 173 (2007)</li><li>N. Metropolis et al., <i>Equation of state calculations by fast computing machines</i>, J. Chem. Phys. 21, 1087 (1953)</li><li>A. Fronczak, <i>Exponential random graph models</i>, w: Encyclopedia of Social Network Analysis and Mining, Springer (2014)</li></ul></section>
+</main>
+<script>
+document.querySelectorAll('.cp').forEach(b=>b.addEventListener('click',()=>{const t=b.parentElement.querySelector('pre').innerText;navigator.clipboard.writeText(t).then(()=>{b.textContent='Skopiowano';setTimeout(()=>b.textContent='Kopiuj',1500)});}));
+</script>
+</body></html>
